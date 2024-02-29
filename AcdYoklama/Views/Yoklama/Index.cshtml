@@ -1,0 +1,83 @@
+﻿@model List<AcdYoklama.Models.YoklamaViewModel>
+
+@{
+    ViewData["Title"] = "Yoklama Listesi";
+    var SuccessMessage = TempData["SuccessMessage"]?.ToString();
+    var ErrorMessage = TempData["ErrorMessage"]?.ToString();
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(SuccessMessage))
+{
+    <div class="alert alert-success">
+        <strong>Başarılı! </strong>@SuccessMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+    </div>
+}
+else if (!string.IsNullOrWhiteSpace(ErrorMessage))
+{
+    <div class="alert alert-danger">
+        <strong>Hata! </strong>@ErrorMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+
+    </div>
+}
+
+
+<form>
+    <button asp-action="Create" asp-controller="Yoklama" class="btn btn-primary mb-3">Yoklama Ekle</button>
+    <input class="sea" style="float: right;
+            padding: 6px;
+            border:none;
+            margin-top: 8px;
+            margin-right: 16px;
+            font-size: 17px; border-radius:5px; background-color: #dee2e6;" type="text" placeholder="Ara...">
+
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>İd</th>
+                <th>Ders Adı</th>
+                <th>Ders Saati</th>
+                <th>Ders Öğretmeni</th>
+                <th>Ders Konusu</th>
+                <th>Ders Öğrencileri</th>
+                <th>Eylem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model !=null && Model.Any())
+            {
+                @foreach (var yoklama in Model)
+                {
+                    <tr>
+                        <td>@yoklama.YoklamaId</td>
+                        <td>@yoklama.Ders_adi</td>
+                        <td>@yoklama.Ders_saati</td>
+                        <td>@yoklama.Ders_ogretmeni</td>
+                        <td>@yoklama.Ders_konusu</td>
+                        <td>@yoklama.Ders_ogrencileri</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="@Url.Action("Edit", "Yoklama", new { YoklamaId = yoklama.YoklamaId })" class="btn btn-primary">Düzenle</a>
+                                <a href="@Url.Action("Delete", "Yoklama", new { YoklamaId = yoklama.YoklamaId })" class="btn btn-danger">Sil</a>
+                                <a href="@Url.Action("Goruntule", "Yoklama", new { YoklamaId = yoklama.YoklamaId })" class="btn btn-warning">Görüntüle</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            Şu anda veri mevcut değil!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</form>

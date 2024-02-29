@@ -1,0 +1,34 @@
+﻿@model AcdYoklama.Models.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Öğrenci Silme";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form action="Delete" method="post">
+    <div class="mb-3">
+        <label class="form-label">OgrenciId</label>
+        <input type="text" class="form-control" asp-for="OgrenciId" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Adı</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_adi" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci No</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_no" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Sınıf</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_sinif" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Url</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_url" readonly />
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-danger" onclick="return function ('Are you sure to delete employee:
+         @Model.Ogrenci_adi')">Sil</button>
+    </div>
+</form> 

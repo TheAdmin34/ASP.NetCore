@@ -1,0 +1,21 @@
+﻿@using AcdYoklama.Models.DbEntities
+@model AcdYoklama.Models.EmployeeViewModel
+@{
+    ViewData["Title"] = "Öğrenci Profil Sayfası";
+    var ErrorMessage = TempData["ErrorMessage"]?.ToString();
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+<div class="Profil">
+     <div class="mb-3">
+        <h5>Öğrenci İd: #@Model.OgrenciId</h5>
+        <h5>Öğrenci Adı-Soyadı: @Model.Ogrenci_adi</h5>
+        <h5>Öğrenci No: @Model.Ogrenci_no</h5>
+        <h5>Öğrenci Sınıfı: @Model.Ogrenci_sinif</h5>
+        <h5"">Öğrenci Url: @Model.Ogrenci_url</h5>
+        <h5>Öğrenci Qr:</h5>
+
+     </div>
+</div>

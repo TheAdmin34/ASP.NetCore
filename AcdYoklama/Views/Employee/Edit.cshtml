@@ -1,0 +1,37 @@
+﻿@model AcdYoklama.Models.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Öğrenci Güncelleme";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form action="Edit" method="post">
+    <div class="mb-3">
+        <label class="form-label">OgrenciId</label>
+        <input type="text" class="form-control" asp-for="OgrenciId" readonly/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Adı</label>  
+        <input type="text" class="form-control" asp-for="Ogrenci_adi" />
+        <span asp-validation-for="Ogrenci_adi" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci No</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_no" />
+        <span asp-validation-for="Ogrenci_no" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Sınıf</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_sinif" />
+        <span asp-validation-for="Ogrenci_sinif" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Url</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_url" />
+        <span asp-validation-for="Ogrenci_url" class="text-danger"></span>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-success">Güncelle</button>
+    </div>
+</form>

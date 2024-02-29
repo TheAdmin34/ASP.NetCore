@@ -1,0 +1,44 @@
+﻿@model AcdYoklama.Models.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Öğrenci Ekleme";
+    var ErrorMessage = TempData["ErrorMessage"]?.ToString();
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+@if (!string.IsNullOrWhiteSpace(ErrorMessage))
+{
+    <div class="alert alert-danger">
+        <strong>Hata! </strong>@ErrorMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+    </div>
+
+}
+
+<form action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Adı</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_adi" />
+        <span asp-validation-for="Ogrenci_adi" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci No</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_no" />
+        <span asp-validation-for="Ogrenci_no" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Sınıfı</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_sinif" />
+        <span asp-validation-for="Ogrenci_sinif" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Öğrenci Url</label>
+        <input type="text" class="form-control" asp-for="Ogrenci_url" />
+        <span asp-validation-for="Ogrenci_adi" class="text-danger"></span>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+</form>
